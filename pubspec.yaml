@@ -1,0 +1,30 @@
+﻿name: game_master_plus
+description: Fluxon by UltraMed delivers performance insights, automation, and security tooling for Android devices.
+publish_to: 'none'
+version: 1.1.0+3
+environment:
+  sdk: '>=3.4.3 <4.0.0'
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  cupertino_icons: ^1.0.6
+  battery_plus: ^5.0.3
+  permission_handler: ^11.3.0
+  url_launcher: ^6.2.5
+  android_intent_plus: ^4.0.2
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  local_auth: ^2.2.0
+  intl: ^0.20.2
+  flutter_lucide: ^1.7.0
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+flutter:
+  uses-material-design: true
+  generate: true
+  assets:
+    - assets/images/

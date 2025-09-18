@@ -1,0 +1,186 @@
+﻿{
+  "@@locale": "pt",
+  "appTitle": "Fluxon",
+  "appTagline": "Seu celular mais rápido, seguro e inteligente, sem esforço.",
+  "tabDashboard": "Painel",
+  "tabTuning": "Ajustes",
+  "tabAutomation": "Automação",
+  "dashboardHeroMessage": "Destrave performance, segurança e automação em um só lugar.",
+  "metricCpuTitle": "Uso de CPU",
+  "metricCpuSubtitle": "Processos ativos e aplicativos recentes",
+  "metricRamTitle": "Uso de RAM",
+  "metricRamSubtitle": "Memória disponível para novos apps",
+  "metricStorageTitle": "Armazenamento livre",
+  "metricStorageSubtitle": "Espaço para apps, fotos e vídeos",
+  "metricTemperatureTitle": "Temperatura do dispositivo",
+  "metricTemperatureSubtitle": "Monitore superaquecimento",
+  "metricBatteryTitle": "Nível de bateria",
+  "metricBatterySubtitle": "Considere ativar economia abaixo de 30%",
+  "buttonOneTapOptimize": "One Tap Optimize",
+  "buttonCacheGuide": "Guia de limpeza de cache",
+  "automationCardTitle": "Regras automáticas",
+  "toggleAutoOptimize": "Auto Optimize ao desbloquear",
+  "toggleNightlyCleanup": "Lembrete de limpeza noturna",
+  "toggleFocusMode": "Sem distrações durante foco",
+  "toggleBatteryReminder": "Aviso de bateria fraca",
+  "messageQuickOptimizeStarted": "Iniciamos uma rotina rápida de otimização.",
+  "messageQuickOptimizeFailed": "Não foi possível otimizar automaticamente. Ajuste em Configurações > Bateria.",
+  "messageStorageGuideOpened": "Abrimos armazenamento. Limpe caches pelo menu do sistema.",
+  "messageAutoOptimizePermission": "Permissão de ignorar otimizações de bateria é necessária.",
+  "messageAutoOptimizeEnabled": "Otimização automática configurada ao desbloquear.",
+  "messageAutoOptimizeDisabled": "Otimização automática desativada.",
+  "messageNightlyPermission": "Permissão para agendar alarmes é necessária.",
+  "messageNightlyEnabled": "Lembrete noturno configurado.",
+  "messageNightlyDisabled": "Lembrete noturno cancelado.",
+  "messageFocusEnabled": "Ative o Não Perturbe para silenciar distrações.",
+  "messageFocusDisabled": "Dica de foco desativada.",
+  "messageNotificationPermission": "Permita notificações para receber alertas.",
+  "messageBatteryReminderEnabled": "Aviso de bateria baixa ativado.",
+  "messageBatteryReminderDisabled": "Aviso de bateria baixa desativado.",
+  "messageManualSettingsFallback": "Abra manualmente nas configurações do sistema.",
+  "performanceProfileEconomy": "Economia",
+  "performanceProfileBalanced": "Balanceado",
+  "performanceProfileTurbo": "Turbo",
+  "networkProfileStreaming": "Streaming",
+  "networkProfileGaming": "Jogos",
+  "networkProfileProductivity": "Produtividade",
+  "messageProfileApplied": "Perfil {performance} e rede {network} enviados ao sistema.",
+  "@messageProfileApplied": {
+    "placeholders": {
+      "performance": {},
+      "network": {}
+    }
+  },
+  "actionSummary": "Resumo",
+  "messageManualAdjustmentsOpened": "Abrimos os ajustes relevantes para você concluir manualmente.",
+  "dialogOptimizationTitle": "Resumo da otimização",
+  "dialogOptimizationContent": "Economia estimada de {gain}% na bateria nas próximas horas.\nDica: mantenha o modo {performance} em tarefas longas.",
+  "@dialogOptimizationContent": {
+    "placeholders": {
+      "gain": {},
+      "performance": {}
+    }
+  },
+  "dialogPrimaryAction": "Entendi",
+  "messageShortcutFailure": "Não foi possível abrir automaticamente. Ajuste manualmente nas configurações.",
+  "dropdownPerformanceLabel": "Perfil de desempenho",
+  "dropdownNetworkLabel": "Prioridade de rede",
+  "labelBrightnessControl": "Controle de brilho",
+  "toggleLimitBackgroundTitle": "Limitar apps em segundo plano",
+  "toggleLimitBackgroundSubtitle": "Reduz o consumo para apps inativos",
+  "toggleAdaptiveBatteryTitle": "Bateria adaptativa",
+  "toggleAdaptiveBatterySubtitle": "Prioriza energia para apps mais usados",
+  "messageDisplaySettingsOpened": "Abrimos a tela de brilho para ajuste manual.",
+  "labelDisplaySettings": "Config. de brilho",
+  "messageBatterySettingsOpened": "Configurações de bateria abertas.",
+  "labelBatterySettings": "Economia de energia",
+  "messageNetworkSettingsOpened": "Abrimos os ajustes de rede para priorizar conexões.",
+  "labelNetworkSettings": "Rede e Wi-Fi",
+  "buttonApplySystemSettings": "Aplicar ajustes do sistema",
+  "insightCpuSpikeTitle": "CPU no limite",
+  "insightCpuSpikeBody": "O uso de CPU está em {value}% agora. Feche apps pesados ou mude para o modo Balanceado para esfriar.",
+  "@insightCpuSpikeBody": {
+    "placeholders": {
+      "value": {}
+    }
+  },
+  "insightCpuTrendTitle": "Uso de CPU em alta",
+  "insightCpuTrendBody": "A carga de processamento aumentou {value}% nos últimos minutos. Considere ativar um perfil de eficiência.",
+  "@insightCpuTrendBody": {
+    "placeholders": {
+      "value": {}
+    }
+  },
+  "insightHighTempTitle": "Dispositivo aquecendo",
+  "insightHighTempBody": "A temperatura chegou a {value}°C. Ventile o aparelho ou interrompa tarefas intensas.",
+  "@insightHighTempBody": {
+    "placeholders": {
+      "value": {}
+    }
+  },
+  "insightStorageLowTitle": "Pouco armazenamento livre",
+  "insightStorageLowBody": "Restam apenas {value} GB livres. Execute a limpeza de armazenamento ou mova arquivos para a nuvem.",
+  "@insightStorageLowBody": {
+    "placeholders": {
+      "value": {}
+    }
+  },
+  "insightBatteryLowTitle": "Bateria baixa",
+  "insightBatteryLowBody": "A bateria está em {value}%. Ative a economia de energia ou conecte o carregador.",
+  "@insightBatteryLowBody": {
+    "placeholders": {
+      "value": {}
+    }
+  },
+  "insightRamHighTitle": "Memória quase cheia",
+  "insightRamHighBody": "Os apps usam {value}% da RAM. Feche processos em segundo plano para evitar travamentos.",
+  "@insightRamHighBody": {
+    "placeholders": {
+      "value": {}
+    }
+  },
+  "insightAllGoodTitle": "Tudo otimizado",
+  "insightAllGoodBody": "Fluxon está controlando performance e temperatura. Continue assim!",
+  "automationRuleSectionTitle": "Automação inteligente",
+  "automationRuleSectionSubtitle": "Crie regras que reagem à bateria, horário ou desbloqueio.",
+  "automationRunRulesNow": "Executar regras agora",
+  "automationCreateRule": "Nova regra de automação",
+  "automationRuleCreatedMessage": "{name} foi ativada. O Fluxon cuida dela a partir de agora.",
+  "@automationRuleCreatedMessage": {
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "automationRuleNoExecutionMessage": "Nenhuma regra foi disparada. Ajuste as condições se necessário.",
+  "automationRuleExecutedMessage": "Executamos {count} automação(ões).",
+  "@automationRuleExecutedMessage": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "automationDeleteRule": "Excluir",
+  "automationConditionUnlock": "Quando o aparelho é desbloqueado",
+  "automationConditionBattery": "Quando a bateria ficar abaixo de {value}%",
+  "@automationConditionBattery": {
+    "placeholders": {
+      "value": {}
+    }
+  },
+  "automationConditionTime": "Por volta de {value}",
+  "@automationConditionTime": {
+    "placeholders": {
+      "value": {}
+    }
+  },
+  "automationConditionBatteryLabel": "Nível de bateria",
+  "automationConditionTimeLabel": "Horário do dia",
+  "automationRuleFormTitle": "Nova regra de automação",
+  "automationRuleNameLabel": "Nome da regra",
+  "automationRuleNameError": "Dê um nome para esta regra.",
+  "automationConditionLabel": "Condição",
+  "automationActionLabel": "Ação",
+  "automationConditionBatteryInput": "Disparar quando a bateria estiver em {value}%.",
+  "@automationConditionBatteryInput": {
+    "placeholders": {
+      "value": {}
+    }
+  },
+  "automationConditionTimeInput": "Disparar às {value}.",
+  "@automationConditionTimeInput": {
+    "placeholders": {
+      "value": {}
+    }
+  },
+  "automationPickTimeButton": "Escolher horário",
+  "commonCancel": "Cancelar",
+  "commonSave": "Salvar",
+  "automationActionQuickOptimize": "Rodar otimização rápida",
+  "automationActionNightlyCleanup": "Agendar limpeza noturna",
+  "automationActionOpenBattery": "Abrir ajustes de bateria",
+  "automationActionOpenDisplay": "Abrir ajustes de tela",
+  "automationActionOpenNetwork": "Abrir ajustes de rede",
+  "automationQuickShortcutsTitle": "Atalhos",
+  "automationEmptyState": "Nenhuma regra criada ainda. Monte uma para automatizar sua rotina.",
+  "automationDefaultRuleName": "Regra Fluxon"
+}
+

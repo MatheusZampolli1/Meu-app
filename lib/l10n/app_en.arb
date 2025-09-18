@@ -1,0 +1,186 @@
+﻿{
+  "@@locale": "en",
+  "appTitle": "Fluxon",
+  "appTagline": "Your phone faster, safer, and smarter—effortlessly.",
+  "tabDashboard": "Dashboard",
+  "tabTuning": "Tuning",
+  "tabAutomation": "Automation",
+  "dashboardHeroMessage": "Unlock performance, security, and automation in one place.",
+  "metricCpuTitle": "CPU usage",
+  "metricCpuSubtitle": "Active processes and recent apps",
+  "metricRamTitle": "RAM usage",
+  "metricRamSubtitle": "Memory available for new apps",
+  "metricStorageTitle": "Free storage",
+  "metricStorageSubtitle": "Space for apps, photos, and videos",
+  "metricTemperatureTitle": "Device temperature",
+  "metricTemperatureSubtitle": "Monitor overheating",
+  "metricBatteryTitle": "Battery level",
+  "metricBatterySubtitle": "Consider enabling power saver below 30%",
+  "buttonOneTapOptimize": "One Tap Optimize",
+  "buttonCacheGuide": "Cache cleaning guide",
+  "automationCardTitle": "Automation rules",
+  "toggleAutoOptimize": "Auto optimize on unlock",
+  "toggleNightlyCleanup": "Nightly cleanup reminder",
+  "toggleFocusMode": "Distraction-free focus",
+  "toggleBatteryReminder": "Low battery alert",
+  "messageQuickOptimizeStarted": "Started a rapid optimization routine.",
+  "messageQuickOptimizeFailed": "Could not optimize automatically. Adjust it in Settings > Battery.",
+  "messageStorageGuideOpened": "Storage settings opened. Clear caches from the system menus.",
+  "messageAutoOptimizePermission": "Battery optimization exemption permission is required.",
+  "messageAutoOptimizeEnabled": "Automatic optimization scheduled for unlock.",
+  "messageAutoOptimizeDisabled": "Automatic optimization disabled.",
+  "messageNightlyPermission": "Alarm scheduling permission is required.",
+  "messageNightlyEnabled": "Nightly reminder scheduled.",
+  "messageNightlyDisabled": "Nightly reminder cancelled.",
+  "messageFocusEnabled": "Enable Do Not Disturb to silence distractions.",
+  "messageFocusDisabled": "Focus hint disabled.",
+  "messageNotificationPermission": "Allow notifications to receive alerts.",
+  "messageBatteryReminderEnabled": "Low battery reminder enabled.",
+  "messageBatteryReminderDisabled": "Low battery reminder disabled.",
+  "messageManualSettingsFallback": "Open the system settings manually.",
+  "performanceProfileEconomy": "Economy",
+  "performanceProfileBalanced": "Balanced",
+  "performanceProfileTurbo": "Turbo",
+  "networkProfileStreaming": "Streaming",
+  "networkProfileGaming": "Gaming",
+  "networkProfileProductivity": "Productivity",
+  "messageProfileApplied": "Performance profile {performance} and network {network} sent to the system.",
+  "@messageProfileApplied": {
+    "placeholders": {
+      "performance": {},
+      "network": {}
+    }
+  },
+  "actionSummary": "Summary",
+  "messageManualAdjustmentsOpened": "We opened the relevant settings so you can finish manually.",
+  "dialogOptimizationTitle": "Optimization summary",
+  "dialogOptimizationContent": "Estimated battery savings of {gain}% over the next hours.\nTip: keep {performance} mode for long tasks.",
+  "@dialogOptimizationContent": {
+    "placeholders": {
+      "gain": {},
+      "performance": {}
+    }
+  },
+  "dialogPrimaryAction": "Got it",
+  "messageShortcutFailure": "Couldn't open automatically. Adjust manually in settings.",
+  "dropdownPerformanceLabel": "Performance profile",
+  "dropdownNetworkLabel": "Network priority",
+  "labelBrightnessControl": "Brightness control",
+  "toggleLimitBackgroundTitle": "Limit background apps",
+  "toggleLimitBackgroundSubtitle": "Reduces energy usage for inactive apps",
+  "toggleAdaptiveBatteryTitle": "Adaptive battery",
+  "toggleAdaptiveBatterySubtitle": "Prioritizes power for frequently used apps",
+  "messageDisplaySettingsOpened": "Brightness settings opened for manual adjustment.",
+  "labelDisplaySettings": "Display settings",
+  "messageBatterySettingsOpened": "Battery settings opened.",
+  "labelBatterySettings": "Power saver",
+  "messageNetworkSettingsOpened": "Network settings opened so you can prioritize connections.",
+  "labelNetworkSettings": "Network & Wi-Fi",
+  "buttonApplySystemSettings": "Apply system settings",
+  "insightCpuSpikeTitle": "CPU at full throttle",
+  "insightCpuSpikeBody": "CPU usage is at {value}% right now. Close heavy apps or switch to Balance mode to cool down.",
+  "@insightCpuSpikeBody": {
+    "placeholders": {
+      "value": {}
+    }
+  },
+  "insightCpuTrendTitle": "CPU trend rising",
+  "insightCpuTrendBody": "Processing load increased by {value}% in the last minutes. Consider enabling an efficiency profile.",
+  "@insightCpuTrendBody": {
+    "placeholders": {
+      "value": {}
+    }
+  },
+  "insightHighTempTitle": "Device getting hot",
+  "insightHighTempBody": "Temperature reached {value}°C. Ventilate the device or pause high intensity tasks.",
+  "@insightHighTempBody": {
+    "placeholders": {
+      "value": {}
+    }
+  },
+  "insightStorageLowTitle": "Low storage available",
+  "insightStorageLowBody": "Only {value} GB free remain. Run storage cleanup or move media to the cloud.",
+  "@insightStorageLowBody": {
+    "placeholders": {
+      "value": {}
+    }
+  },
+  "insightBatteryLowTitle": "Battery running low",
+  "insightBatteryLowBody": "Battery is at {value}%. Activate power saver or connect your charger.",
+  "@insightBatteryLowBody": {
+    "placeholders": {
+      "value": {}
+    }
+  },
+  "insightRamHighTitle": "Memory usage high",
+  "insightRamHighBody": "Apps are using {value}% of RAM. Close background apps to avoid slowdowns.",
+  "@insightRamHighBody": {
+    "placeholders": {
+      "value": {}
+    }
+  },
+  "insightAllGoodTitle": "Everything optimized",
+  "insightAllGoodBody": "Fluxon is keeping performance and temperature under control. Keep it up!",
+  "automationRuleSectionTitle": "Intelligent automation",
+  "automationRuleSectionSubtitle": "Create rules that react to battery, time or unlock events.",
+  "automationRunRulesNow": "Run rules now",
+  "automationCreateRule": "New automation rule",
+  "automationRuleCreatedMessage": "{name} activated. Fluxon will monitor it from now on.",
+  "@automationRuleCreatedMessage": {
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "automationRuleNoExecutionMessage": "No rules were triggered. Adjust the conditions if needed.",
+  "automationRuleExecutedMessage": "Executed {count} automation(s).",
+  "@automationRuleExecutedMessage": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "automationDeleteRule": "Delete",
+  "automationConditionUnlock": "When the device is unlocked",
+  "automationConditionBattery": "When battery goes below {value}%",
+  "@automationConditionBattery": {
+    "placeholders": {
+      "value": {}
+    }
+  },
+  "automationConditionTime": "Around {value}",
+  "@automationConditionTime": {
+    "placeholders": {
+      "value": {}
+    }
+  },
+  "automationConditionBatteryLabel": "Battery level",
+  "automationConditionTimeLabel": "Time of day",
+  "automationRuleFormTitle": "New automation rule",
+  "automationRuleNameLabel": "Rule name",
+  "automationRuleNameError": "Give this rule a name.",
+  "automationConditionLabel": "Condition",
+  "automationActionLabel": "Action",
+  "automationConditionBatteryInput": "Trigger when battery is at {value}%.",
+  "@automationConditionBatteryInput": {
+    "placeholders": {
+      "value": {}
+    }
+  },
+  "automationConditionTimeInput": "Trigger at {value}.",
+  "@automationConditionTimeInput": {
+    "placeholders": {
+      "value": {}
+    }
+  },
+  "automationPickTimeButton": "Choose time",
+  "commonCancel": "Cancel",
+  "commonSave": "Save",
+  "automationActionQuickOptimize": "Run quick optimization",
+  "automationActionNightlyCleanup": "Schedule nightly cleanup",
+  "automationActionOpenBattery": "Open battery settings",
+  "automationActionOpenDisplay": "Open display settings",
+  "automationActionOpenNetwork": "Open network settings",
+  "automationQuickShortcutsTitle": "Shortcuts",
+  "automationEmptyState": "No automation rules yet. Create one to automate your routine.",
+  "automationDefaultRuleName": "Fluxon Rule"
+}
+
