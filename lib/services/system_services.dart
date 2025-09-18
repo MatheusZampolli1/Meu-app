@@ -40,13 +40,14 @@ class DeviceMetrics {
     return DeviceMetrics(
       cpuUsage: _parseDouble(map['cpuUsage'], 0),
       ramUsage: _parseDouble(map['ramUsage'], 0),
-      storageFree: _parseDouble(map['storageFreeGb'] ?? map['storageFree'], 0),
-      temperature: _parseDouble(map['temperatureC'] ?? map['temperature'], 0),
+      storageFree: _parseDouble(map['storageFree'] ?? map['storageFreeGb'], 0),
+      temperature: _parseDouble(map['temperature'] ?? map['temperatureC'], 0),
       batteryLevel: _parseInt(map['batteryLevel'], 0),
       updatedAt: DateTime.now(),
     );
   }
 
+  /// 🔹 Reconstrói a partir do Hive (armazenado em Map<String, dynamic>)
   factory DeviceMetrics.fromStorageMap(Map<String, dynamic> data) {
     return DeviceMetrics(
       cpuUsage: _parseDouble(data['cpuUsage'], 0),
@@ -58,6 +59,7 @@ class DeviceMetrics {
     );
   }
 
+  /// 🔹 Converte para salvar no Hive
   Map<String, dynamic> toStorageMap() {
     return {
       'cpuUsage': cpuUsage,
@@ -90,24 +92,23 @@ class SystemMetricsService {
   DeviceMetrics? _last;
 
   Future<DeviceMetrics> fetchMetrics() async {
-    final dynamic result = await _channel.invokeMethod<dynamic>('getMetrics');
-    if (result is Map) {
-      final metrics = DeviceMetrics.fromMap(result);
-      _last = metrics;
-      return metrics;
+    try {
+      final dynamic result = await _channel.invokeMethod<dynamic>('getSystemMetrics');
+      if (result is Map) {
+        final metrics = DeviceMetrics.fromMap(result);
+        _last = metrics;
+        return metrics;
+      }
+      throw const FormatException('Invalid metrics payload');
+    } catch (_) {
+      _last ??= DeviceMetrics.initial();
+      return _last!;
     }
-    throw const FormatException('Invalid metrics payload');
   }
 
   Stream<DeviceMetrics> metricsStream({Duration period = const Duration(seconds: 5)}) async* {
     while (true) {
-      try {
-        final metrics = await fetchMetrics();
-        yield metrics;
-      } catch (_) {
-        _last ??= DeviceMetrics.initial();
-        yield _last!;
-      }
+      yield await fetchMetrics();
       await Future<void>.delayed(period);
     }
   }
@@ -150,9 +151,7 @@ class SystemAutomationService {
   Future<void> scheduleUnlockOptimization({required bool enable}) async {
     try {
       await _channel.invokeMethod<void>('scheduleUnlockOptimization', {'enable': enable});
-    } catch (_) {
-      // fallback noop when native side is absent
-    }
+    } catch (_) {}
   }
 
   Future<void> scheduleNightlyCleanup({required bool enable}) async {
@@ -207,7 +206,7 @@ class SystemAutomationService {
 
   Future<void> _launchUri(Uri uri) async {
     if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
-      throw PlatformException(code: 'launch_failed', message: 'N�o foi poss�vel abrir ');
+      throw PlatformException(code: 'launch_failed', message: 'Não foi possível abrir ${uri.toString()}');
     }
   }
 }

@@ -142,11 +142,6 @@ class _AutomationPageState extends State<AutomationPage> {
           style: Theme.of(context).textTheme.titleLarge,
         ),
         const SizedBox(height: 12),
-        Text(
-          l10n.automationRuleSectionSubtitle,
-          style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.white70),
-        ),
-        const SizedBox(height: 16),
         Wrap(
           spacing: 12,
           runSpacing: 12,
@@ -180,42 +175,6 @@ class _AutomationPageState extends State<AutomationPage> {
               onToggle: (value) => _toggleRule(rule, value),
             ),
           ),
-        const SizedBox(height: 24),
-        Text(
-          l10n.automationQuickShortcutsTitle,
-          style: Theme.of(context).textTheme.titleMedium,
-        ),
-        const SizedBox(height: 12),
-        Wrap(
-          spacing: 12,
-          runSpacing: 12,
-          children: [
-            OutlinedButton.icon(
-              onPressed: () => _runAction(
-                () => _automationService.openDisplaySettings(),
-                l10n.messageDisplaySettingsOpened,
-              ),
-              icon: const Icon(Icons.brightness_6),
-              label: Text(l10n.labelDisplaySettings),
-            ),
-            OutlinedButton.icon(
-              onPressed: () => _runAction(
-                () => _automationService.openBatterySaverSettings(),
-                l10n.messageBatterySettingsOpened,
-              ),
-              icon: const Icon(Icons.battery_saver),
-              label: Text(l10n.labelBatterySettings),
-            ),
-            OutlinedButton.icon(
-              onPressed: () => _runAction(
-                () => _automationService.openNetworkSettings(),
-                l10n.messageNetworkSettingsOpened,
-              ),
-              icon: const Icon(Icons.wifi),
-              label: Text(l10n.labelNetworkSettings),
-            ),
-          ],
-        ),
       ],
     );
   }
@@ -234,84 +193,17 @@ class _AutomationRuleCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
-    final accent = Theme.of(context).colorScheme.primary;
-
-    final conditionDescription = _describeCondition(rule.condition, l10n);
-    final actionDescription = _describeAction(rule.action, l10n);
-
     return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Expanded(
-                  child: Text(
-                    rule.name,
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleMedium
-                        ?.copyWith(fontWeight: FontWeight.w600),
-                  ),
-                ),
-                Switch.adaptive(
-                  value: rule.enabled,
-                  onChanged: onToggle,
-                  thumbColor: WidgetStatePropertyAll(accent),
-                ),
-              ],
-            ),
-            const SizedBox(height: 8),
-            Text(
-              conditionDescription,
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.white70),
-            ),
-            const SizedBox(height: 4),
-            Text(
-              actionDescription,
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.white54),
-            ),
-            const SizedBox(height: 12),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                TextButton.icon(
-                  onPressed: onDelete,
-                  icon: const Icon(Icons.delete_outline),
-                  label: Text(l10n.automationDeleteRule),
-                ),
-              ],
-            ),
-          ],
+      child: ListTile(
+        title: Text(rule.name),
+        subtitle: Text("${rule.condition.type} → ${rule.action.type}"),
+        trailing: Switch.adaptive(
+          value: rule.enabled,
+          onChanged: onToggle,
         ),
+        onLongPress: onDelete,
       ),
     );
-  }
-
-  String _describeCondition(AutomationCondition condition, AppLocalizations l10n) {
-    return switch (condition.type) {
-      AutomationConditionType.unlock => l10n.automationConditionUnlock,
-      AutomationConditionType.batteryBelow =>
-          l10n.automationConditionBattery(condition.threshold?.toInt() ?? 20),
-      AutomationConditionType.timeOfDay => () {
-        final time = condition.time ?? const TimeOfDay(hour: 22, minute: 0);
-        final formatted = '${time.hour.toString().padLeft(2, '0')}:${time.minute.toString().padLeft(2, '0')}';
-        return l10n.automationConditionTime(formatted);
-      }(),
-    };
-  }
-
-  String _describeAction(AutomationAction action, AppLocalizations l10n) {
-    return switch (action.type) {
-      AutomationActionType.quickOptimize => l10n.automationActionQuickOptimize,
-      AutomationActionType.nightlyCleanup => l10n.automationActionNightlyCleanup,
-      AutomationActionType.openBatterySettings => l10n.automationActionOpenBattery,
-      AutomationActionType.openDisplaySettings => l10n.automationActionOpenDisplay,
-      AutomationActionType.openNetworkSettings => l10n.automationActionOpenNetwork,
-    };
   }
 }
 
@@ -322,24 +214,13 @@ class _EmptyState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.04),
-        borderRadius: BorderRadius.circular(18),
-        border: Border.all(color: Colors.white24),
-      ),
-      padding: const EdgeInsets.all(24),
-      child: Row(
-        children: [
-          const Icon(Icons.auto_mode, color: Colors.white54),
-          const SizedBox(width: 12),
-          Expanded(
-            child: Text(
-              message,
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.white70),
-            ),
-          ),
-        ],
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Text(
+          message,
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.white70),
+        ),
       ),
     );
   }
@@ -355,6 +236,7 @@ class _AutomationRuleForm extends StatefulWidget {
 class _AutomationRuleFormState extends State<_AutomationRuleForm> {
   final _formKey = GlobalKey<FormState>();
   late final TextEditingController _nameController;
+
   AutomationConditionType _conditionType = AutomationConditionType.unlock;
   AutomationActionType _actionType = AutomationActionType.quickOptimize;
   int _batteryThreshold = 25;
@@ -363,8 +245,7 @@ class _AutomationRuleFormState extends State<_AutomationRuleForm> {
   @override
   void initState() {
     super.initState();
-    final l10n = AppLocalizations.of(context);
-    _nameController = TextEditingController(text: l10n?.automationDefaultRuleName ?? 'Fluxon Rule');
+    _nameController = TextEditingController(text: "Nova Regra");
   }
 
   @override
@@ -375,133 +256,73 @@ class _AutomationRuleFormState extends State<_AutomationRuleForm> {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
     final media = MediaQuery.of(context);
-    final padding = media.viewInsets + const EdgeInsets.symmetric(horizontal: 20, vertical: 24);
+    final padding = media.viewInsets + const EdgeInsets.all(20);
 
     return Padding(
       padding: padding,
       child: Form(
         key: _formKey,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(l10n.automationRuleFormTitle, style: Theme.of(context).textTheme.titleLarge),
-            const SizedBox(height: 16),
-            TextFormField(
-              controller: _nameController,
-              decoration: InputDecoration(labelText: l10n.automationRuleNameLabel),
-              validator: (value) => value == null || value.trim().isEmpty
-                  ? l10n.automationRuleNameError
-                  : null,
-            ),
-            const SizedBox(height: 16),
-            DropdownButtonFormField<AutomationConditionType>(
-              // ignore: deprecated_member_use
-              value: _conditionType,
-              decoration: InputDecoration(labelText: l10n.automationConditionLabel),
-              items: [
-                DropdownMenuItem(
-                  value: AutomationConditionType.unlock,
-                  child: Text(l10n.automationConditionUnlock),
-                ),
-                DropdownMenuItem(
-                  value: AutomationConditionType.batteryBelow,
-                  child: Text(l10n.automationConditionBatteryLabel),
-                ),
-                DropdownMenuItem(
-                  value: AutomationConditionType.timeOfDay,
-                  child: Text(l10n.automationConditionTimeLabel),
-                ),
-              ],
-              onChanged: (value) => setState(() => _conditionType = value ?? _conditionType),
-            ),
-            const SizedBox(height: 16),
-            if (_conditionType == AutomationConditionType.batteryBelow)
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(l10n.automationConditionBatteryInput(_batteryThreshold)),
-                  Slider(
-                    value: _batteryThreshold.toDouble(),
-                    min: 5,
-                    max: 60,
-                    divisions: 11,
-                    label: '$_batteryThreshold%',
-                    onChanged: (value) => setState(() => _batteryThreshold = value.round()),
-                  ),
-                ],
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextFormField(
+                controller: _nameController,
+                decoration: const InputDecoration(labelText: "Nome da Regra"),
+                validator: (v) => v == null || v.isEmpty ? "Digite um nome" : null,
               ),
-            if (_conditionType == AutomationConditionType.timeOfDay)
-              Row(
-                children: [
-                  Expanded(
-                    child: Text(
-                      l10n.automationConditionTimeInput(
-                        '${_timeOfDay.hour.toString().padLeft(2, '0')}:${_timeOfDay.minute.toString().padLeft(2, '0')}',
-                      ),
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () async {
-                      final selected = await showTimePicker(
-                        context: context,
-                        initialTime: _timeOfDay,
-                      );
-                      if (selected != null) {
-                        setState(() => _timeOfDay = selected);
-                      }
-                    },
-                    child: Text(l10n.automationPickTimeButton),
-                  ),
-                ],
+              const SizedBox(height: 16),
+              DropdownButtonFormField<AutomationConditionType>(
+                value: _conditionType,
+                items: AutomationConditionType.values
+                    .map((e) => DropdownMenuItem(
+                          value: e,
+                          child: Text(e.toString()),
+                        ))
+                    .toList(),
+                onChanged: (v) => setState(() => _conditionType = v!),
               ),
-            const SizedBox(height: 16),
-            DropdownButtonFormField<AutomationActionType>(
-              // ignore: deprecated_member_use
-              value: _actionType,
-              decoration: InputDecoration(labelText: l10n.automationActionLabel),
-              items: [
-                DropdownMenuItem(
-                  value: AutomationActionType.quickOptimize,
-                  child: Text(l10n.automationActionQuickOptimize),
+              if (_conditionType == AutomationConditionType.batteryBelow)
+                Slider(
+                  value: _batteryThreshold.toDouble(),
+                  min: 5,
+                  max: 60,
+                  divisions: 11,
+                  label: "$_batteryThreshold%",
+                  onChanged: (v) => setState(() => _batteryThreshold = v.round()),
                 ),
-                DropdownMenuItem(
-                  value: AutomationActionType.nightlyCleanup,
-                  child: Text(l10n.automationActionNightlyCleanup),
-                ),
-                DropdownMenuItem(
-                  value: AutomationActionType.openBatterySettings,
-                  child: Text(l10n.automationActionOpenBattery),
-                ),
-                DropdownMenuItem(
-                  value: AutomationActionType.openDisplaySettings,
-                  child: Text(l10n.automationActionOpenDisplay),
-                ),
-                DropdownMenuItem(
-                  value: AutomationActionType.openNetworkSettings,
-                  child: Text(l10n.automationActionOpenNetwork),
-                ),
-              ],
-              onChanged: (value) => setState(() => _actionType = value ?? _actionType),
-            ),
-            const SizedBox(height: 24),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
+              if (_conditionType == AutomationConditionType.timeOfDay)
                 TextButton(
-                  onPressed: () => Navigator.of(context).pop(),
-                  child: Text(l10n.commonCancel),
+                  onPressed: () async {
+                    final picked = await showTimePicker(
+                      context: context,
+                      initialTime: _timeOfDay,
+                    );
+                    if (picked != null) {
+                      setState(() => _timeOfDay = picked);
+                    }
+                  },
+                  child: const Text("Selecionar horário"),
                 ),
-                const SizedBox(width: 12),
-                ElevatedButton(
-                  onPressed: _submit,
-                  child: Text(l10n.commonSave),
-                ),
-              ],
-            ),
-          ],
+              const SizedBox(height: 16),
+              DropdownButtonFormField<AutomationActionType>(
+                value: _actionType,
+                items: AutomationActionType.values
+                    .map((e) => DropdownMenuItem(
+                          value: e,
+                          child: Text(e.toString()),
+                        ))
+                    .toList(),
+                onChanged: (v) => setState(() => _actionType = v!),
+              ),
+              const SizedBox(height: 24),
+              ElevatedButton(
+                onPressed: _submit,
+                child: const Text("Salvar"),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -509,13 +330,17 @@ class _AutomationRuleFormState extends State<_AutomationRuleForm> {
 
   void _submit() {
     if (!_formKey.currentState!.validate()) return;
+
     final condition = switch (_conditionType) {
       AutomationConditionType.unlock => AutomationCondition.unlock(),
       AutomationConditionType.batteryBelow =>
           AutomationCondition.batteryBelow(_batteryThreshold),
-      AutomationConditionType.timeOfDay => AutomationCondition.timeOfDay(_timeOfDay),
+      AutomationConditionType.timeOfDay =>
+          AutomationCondition.timeOfDay(_timeOfDay),
     };
+
     final action = AutomationAction(type: _actionType);
+
     final rule = AutomationRule.create(
       name: _nameController.text.trim(),
       condition: condition,
@@ -524,6 +349,3 @@ class _AutomationRuleFormState extends State<_AutomationRuleForm> {
     Navigator.of(context).pop(rule);
   }
 }
-
-
-
